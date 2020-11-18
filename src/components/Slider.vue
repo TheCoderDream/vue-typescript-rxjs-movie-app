@@ -43,12 +43,11 @@ export default class Slider extends Vue {
   direction = 1;
   transitionName = 'fade';
   show = true;
-  currentMovie: Movie = null;
+  currentMovie: Movie | null = null;
 
   @Watch('movies')
   onMoviesChange(val: Movie[], oldVal: Movie[]) {
-      this.currentMovie = val[0];
-      console.log(this.currentMovie);
+      if (val?.length ) this.currentMovie = val[0];
   }
 
   slide(dir: Direction): void {

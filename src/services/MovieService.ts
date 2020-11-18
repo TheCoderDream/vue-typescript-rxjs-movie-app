@@ -37,7 +37,7 @@ class MovieService {
     });
   }
 
-  public getMovie(id: string, language = 'en-US'): Promise<{ data: Movie}> {
+  public getMovie(id: string | number, language = 'en-US'): Promise<{ data: Movie}> {
     return this.axiosInstance.get(`/movie/${id}`, {
       params: {
         ...this.defaultParams,
@@ -45,7 +45,7 @@ class MovieService {
     });
   }
 
-  public getActors(movieId: number): Promise<{ data: Actors }> {
+  public getActors(movieId: number | string): Promise<{ data: Actors }> {
     return this.axiosInstance.get(`/movie/${movieId}/credits`, {
       params: {
         ...this.defaultParams,
@@ -53,7 +53,7 @@ class MovieService {
     });
   }
 
-  public getMoviesByPage(movieId: number): Promise<{ data: MovieList }> {
+  public getMoviesByPage(movieId: number | string): Promise<{ data: MovieList }> {
     return this.axiosInstance.get(`/movie/popular`, {
       params: {
         ...this.defaultParams,

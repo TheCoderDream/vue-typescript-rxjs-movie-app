@@ -26,11 +26,11 @@ import Header from "@/components/Header.vue";
   components: {Header, Actor, MovieInfo, Spinner}
 })
 export default class MovieDetail extends Vue {
-  movieDetail = null;
+  movieDetail: any;
   actors: Cast[] = [];
 
-  async mounted(): void {
-    const movieId = this.$route.params.movieId;
+  async mounted(): Promise<void> {
+    const movieId = +this.$route.params.movieId as number;
     try {
       const [movieResult, actorsResult] = await Promise.all(
           [

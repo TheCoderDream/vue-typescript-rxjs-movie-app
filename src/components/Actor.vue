@@ -13,7 +13,7 @@ import { Cast } from "../services/types";
 
 @Component
 export default class Actor extends Vue {
-  @Prop() actor: Cast;
+  @Prop() actor!: Cast;
 
   get actorPoster(): string {
     return MovieService.movieService.getMoviePoster(this.actor.profile_path);

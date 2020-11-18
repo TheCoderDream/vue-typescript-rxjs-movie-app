@@ -23,7 +23,7 @@ import { Movie } from '../services/types';
 
 @Component
 export default class MovieInfoBar extends Vue{
-  @Prop() movie: Movie;
+  @Prop() movie!: Movie;
 }
 </script>
 

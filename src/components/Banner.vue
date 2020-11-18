@@ -16,7 +16,7 @@ import { Movie } from '@/services/types';
 
 @Component
 export default class Banner extends Vue {
-  @Prop() movie: Movie;
+  @Prop() movie!: Movie;
   get bannerStyle() {
     return {
       backgroundImage:

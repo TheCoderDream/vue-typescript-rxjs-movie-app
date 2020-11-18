@@ -39,7 +39,7 @@ export default class Home extends Vue {
   scrollFetchDisabled = false;
   subscription: Subscription = new Subscription();
   noResult = false;
-  query$ = new Subject();
+  query$ = new Subject<string>();
 
   @Watch('searchTerm')
   changedQuery(value: string): void {
@@ -93,7 +93,7 @@ export default class Home extends Vue {
 
   handleSearch(): void {
     const sub = this.query$.pipe(
-        debounceTime(200),
+        debounceTime<string>(200),
         map((val: string) => val.trim().toLocaleLowerCase()),
         distinctUntilChanged(),
         filter((value: string) => {
@@ -109,7 +109,7 @@ export default class Home extends Vue {
         switchMap((query: string) => from(MovieService.movieService.searchMovies(query))),
     )
     .subscribe(
-        (data) => {
+        (data: any) => {
           this.loading = false;
           this.movieList = data.data.results;
         }

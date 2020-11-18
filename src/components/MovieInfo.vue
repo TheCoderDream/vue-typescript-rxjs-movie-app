@@ -29,7 +29,7 @@ import {Movie} from '../services/types';
 
 @Component
 export default class MovieInfo extends Vue {
-  @Prop() movie: Movie;
+  @Prop() movie!: Movie;
 
   get movieInfoStyle() {
     return {
